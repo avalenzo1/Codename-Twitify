@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#0356fc">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        <title>Codename Twitify</title>
+        <style>
+            .fixed {
+                box-shadow: 0 0 5rem #00000050;
+            }
+
+            .navbar ul {
+                gap: 1rem;
+            }
+
+            .sm_blue {
+                gap: 0.5rem;
+            }
+
+            .music-player {
+                /* backdrop-filter: blur(6px); */
+                gap: 0.5rem;
+            }
+
+            .playback {
+                background-color: transparent !important;
+                color: inherit !important;
+                height: 2rem;
+                aspect-ratio: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: solid 2px #0356fc !important;
+                font-size: 1rem;
+                transition: 0.2s;
+            }
+
+            .btn:focus {
+                box-shadow: 0 0 0 2pt #1F51F055;
+                outline: none;
+            }
+
+            .fr_pfp-name {
+                gap: 0.5rem;
+            }
+
+            .wrapper {
+                display: grid;
+                grid-auto-rows: 1fr;
+                grid-template-columns: 0.5fr 1.5fr;
+            }
+
+            .posts {
+                display: grid;
+                grid-auto-rows: 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
+                overflow: overlay;
+                border-radius: .5rem;
+            }
+
+            .posts>.post {
+                background-color: #e9f0ff;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                aspect-ratio: 1;
+            }
+
+            .posts>.text {
+                padding: .5rem;
+                text-overflow: ellipsis;
+            }
+
+            .posts>.post>.img_cont {
+                aspect-ratio: 1;
+            }
+
+            .albums_img-cont img {
+                width: calc(50% - .5rem);
+            }
+
+            .jump::before {
+                left: calc(50% - 5px);
+            }
+
+            @media only screen and (max-width: 600px) {
+                .navbar ul {
+                    gap: 0;
+                }
+
+                .posts {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                .albums_img-cont {
+                    display: flex;
+                    gap: 0.5rem;
+                    margin: 0 0.5rem;
+                    overflow-x: auto;
+                    border-radius: 0.5rem;
+                }
+
+                .albums_img-cont img {
+                    width: 100px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul>
+                <li id="menuToggle">
+                    <button class="ripple btn"><span class="fa fa-bars"></span></button>
+                </li>
+                <li>
+                    <a href="#" class="ripple">Codename Twitify</a>
+                </li>
+                <li>
+                    <a href="#about" class="ripple">About</a>
+                </li>
+                <li>
+                    <a href="#albums" class="ripple">Albums</a>
+                </li>
+                <li>
+                    <a href="#posts" class="ripple">Posts</a>
+                </li>
+            </ul>
+        </nav>
+        <header>
+            <div class="banner">
+                <div class="banner-color" style="background-color: #0356fc42;"></div>
+            </div>
+        </header>
+        <div class="blue">
+            <div class="pfp-cont">
+                <img src="https://i.scdn.co/image/ab6761610000e5eb2183ea958d3777d4c485138a" class="pfp">
+            </div>
+            <div class="tw_tag-container">
+                <div class="tw_tag">Kendrick Lamar</div>
+            </div>
+        </div>
+        <main>
+            <div class="wrapper">
+                <aside class="sidebar" id="about">
+                    <div class="quote">
+                        “I can dig rapping, but a rapper with a ghost writer? What the #!*@ happened?”
+                    </div>
+                    <div class="friendsList" id="fr_list">
+                        <h2>Friends</h2>
+                        <div class="fr_pfp">
+                            <a href="#babykeem" class="ripple">
+                                <div class="fr_pfp-name">
+                                    <img src="https://i.scdn.co/image/ab6761610000e5ebd6f2323c1971fd5a70cd0255">
+                                    <div class="fr_pfp-info">
+                                        Baby Keem
+                                        <small>@babykeem</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <button class="btn follow ripple">Follow</button>
+                        </div>
+                        <div class="fr_pfp">
+                            <a href="#jcole" class="ripple">
+                                <div class="fr_pfp-name">
+                                    <img src="https://i.scdn.co/image/ab6761610000e5ebadd503b411a712e277895c8a">
+                                    <div class="fr_pfp-info">
+                                        J. Cole
+                                        <small>@jcole</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <button class="btn follow ripple">Follow</button>
+                        </div>
+                        <div class="fr_pfp">
+                            <a href="#eminem" class="ripple">
+                                <div class="fr_pfp-name">
+                                    <img src="https://i.scdn.co/image/ab6761610000e5eba00b11c129b27a88fc72f36b">
+                                    <div class="fr_pfp-info">
+                                        Eminem
+                                        <small>@eminem</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <button class="btn follow ripple">Follow</button>
+                        </div>
+                    </div>
+                    <div class="albums scroll" id="albums">
+                        <h2>Albums</h2>
+                        <div class="albums_img-cont">
+                            <a href="#dang">
+                                <img src="https://cdn2.albumoftheyear.org/200x/album/2017/76870-damn-1.jpg">
+                            </a>
+                            <a href="#tpab">
+                                <img src="https://cdn2.albumoftheyear.org/200x/album/2015/29250-to-pimp-a-butterfly.jpg">
+                            </a>
+                            <a href="#gkmc">
+                                <img src="https://cdn2.albumoftheyear.org/200x/album/good-kid-maad-city.jpg">
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+                <article class="main">
+                    <div class="posts" id="posts">
+                        <div class="post" tabindex="0">
+                            <div class="img_cont ripple" style="background: url(https://i.pinimg.com/originals/bc/8a/41/bc8a41bfa154f06686d15800c91529e5.jpg);"></div>
+                        </div>
+                        <div class="post" tabindex="0">
+                            <div class="img_cont ripple" style="background: url(https://i.pinimg.com/736x/c6/d0/9f/c6d09f8aad25fff8e7f7b3eea97e59b7.jpg);"></div>
+                        </div>
+                        <div class="post text ripple" tabindex="0">
+                            THEY SAY MY FACE DONT LOOK THE SAME WITH THE STOCK-
+                            <br><br>
+                            Condolences to the family of the late great Tech9 of philly. Rest well.
+                        </div>
+                        <div class="post text ripple" tabindex="0">
+                            A problem with English classes is that they focus on old a-- stuff all the time. It doesn't keep the student interested. Am I saying we should eliminate all old literature from education? No. But we should always incorporate these new forms of poetry somewhat to keep people interested
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+            <div class="gap"></div>
+            <div class="music-player" tabindex="0" id="musicPlayer" tabindex="0">
+                <button class="btn btn-text playback ripple">
+                    <span class="fa-solid fa-play"></span>
+                </button>
+                <button class="btn btn-text loop disabled">
+                    <span class="fa-solid fa-infinity"></span>
+                </button>
+                <div volume="">
+                    <div class="volume">
+                        <div class="range-cont">
+                            <div class="range v-range">
+                                <div class="progress v-progress"></div>
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                        <button class="btn-text btn volume">
+                            <span class="fa-solid fa-volume-high"></span>
+                        </button>
+                    </div>
+                </div>
+                <small class="timestamp">00:00:00</small>
+                <div playback="">
+                    <div class="range h-range">
+                        <div class="buffered"></div>
+                        <div class="progress h-progress"></div>
+                        <div class="circle"></div>
+                        <div class="jump" style="backdrop-filter: blur(2px);"></div>
+                    </div>
+                </div>
+                <small class="timestamp">00:00:00</small>
+            </div>
+        </main>
+    </body>
+</html>
