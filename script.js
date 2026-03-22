@@ -90,7 +90,7 @@ window.onload = function() {
 
     let Flare = (function() {
         let player = document.querySelector("#musicPlayer");
-        let music = new Audio("https://drive.google.com/uc?id=1Msf8rDz187eAs4ovmuFysUrk7NKX-iT7");
+        let music = new Audio("https://raw.githubusercontent.com/avalenzo1/Codename-Twitify/refs/heads/main/momma.mp3");
 
         let loop = document.querySelector("#musicPlayer .loop");
 
